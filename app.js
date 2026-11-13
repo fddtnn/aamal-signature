@@ -92,22 +92,33 @@
   // 2) the book: folded pages open flat while the strip slides across
   var mmq = gsap.matchMedia();
   mmq.add("(min-width: 961px)", function () {
-    var strip = $(".book__strip"), leaves = $$(".leaf", strip);
+    var strip = $(".book__strip"), leaves = $$(".leaf", strip), n = leaves.length;
+    var countEl = $(".book__count b"), barEl = $(".book__bar i");
     var state = { p: 0 };
+    var clamp = function (v, a, b) { return Math.max(a, Math.min(b, v)); };
     function render() {
-      var p = state.p, ang = 72 * (1 - p), rad = ang * Math.PI / 180;
-      var w = leaves[0].offsetWidth, shrink = w * (1 - Math.cos(rad));
+      var p = state.p;
+      // phase 1 (0 → 0.3): the pages unfold in place, all of them still on screen
+      var unfold = clamp(p / 0.3, 0, 1), ang = 72 * (1 - unfold), rad = ang * Math.PI / 180;
+      var w = leaves[0].offsetWidth, pw = w * Math.cos(rad), shrink = w - pw;
       leaves.forEach(function (lf, i) {
         var dir = i % 2 === 0 ? -1 : 1;
         lf.style.transform = "translateX(" + (-shrink * i) + "px) rotateY(" + (dir * ang) + "deg)";
       });
-      var vw = window.innerWidth;
-      var foldedW = leaves.length * w * Math.cos(rad) + vw * 0.2;
-      var flatW = leaves.length * w + vw * 0.2;
-      var startX = (vw - foldedW) / 2 - vw * 0.1 + w * 0.15;
-      var endX = vw - flatW;
-      var x = startX + (endX - startX) * Math.max(0, (p - 0.25) / 0.75);
+      // phase 2 (0.2 → 1): the page being read is kept in the middle of the screen, first to last,
+      // and the strip never slides past its own ends, so every page is fully seen at some point
+      var vw = window.innerWidth, pad = parseFloat(getComputedStyle(strip).paddingLeft) || 0, margin = vw * 0.05;
+      var total = n * pw;
+      var pan = clamp((p - 0.2) / 0.8, 0, 1);
+      var focus = 0.5 + pan * (n - 1);
+      var x;
+      if (total <= vw - margin * 2) x = (vw - total) / 2 - pad;
+      else x = clamp(vw / 2 - (pad + focus * pw), vw - margin - (pad + total), margin - pad);
       strip.style.transform = "translateX(" + x + "px)";
+      var cur = clamp(Math.round(focus - 0.5), 0, n - 1);
+      if (countEl) countEl.textContent = String(cur + 1).padStart(2, "0");
+      if (barEl) barEl.style.transform = "scaleX(" + p + ")";
+      leaves.forEach(function (lf, i) { lf.classList.toggle("is-focus", unfold === 1 && i === cur); });
     }
     render();
     var tw = gsap.to(state, { p: 1, ease: "none", onUpdate: render, scrollTrigger: { trigger: ".book", start: "top top", end: "bottom bottom", scrub: 0.8 } });
