@@ -126,6 +126,61 @@
     return function () { tw.kill(); window.removeEventListener("resize", render); leaves.forEach(function (lf) { lf.style.transform = ""; }); strip.style.transform = ""; };
   });
 
+  // 2b) phones/tablets: the same book, one page at a time, turned like a real page while scrolling (or swiping)
+  mmq.add("(max-width: 960px)", function () {
+    var book = $(".book"), stage = $(".book__stage"), leaves = $$(".leaf", book), n = leaves.length;
+    var countEl = $(".book__count b"), barEl = $(".book__bar i");
+    book.classList.add("is-flip");
+    leaves.forEach(function (lf, i) { lf.style.zIndex = String(n - i); });
+    var state = { p: 0 };
+    function render() {
+      var rtl = root.dir === "rtl", turns = state.p * (n - 1);
+      leaves.forEach(function (lf, i) {
+        var f = Math.max(0, Math.min(1, turns - i));                       // how far this page has turned
+        var ang = (rtl ? 1 : -1) * 180 * f;                                 // RTL books turn the other way
+        var lift = Math.sin(Math.PI * f);
+        lf.style.transform = "rotateY(" + ang + "deg) translateZ(" + (lift * 30) + "px)";
+        var under = Math.max(0, Math.min(1, turns - (i - 1)));             // the page underneath brightens as the one above lifts
+        lf.style.filter = "brightness(" + (i === 0 ? 1 - lift * 0.25 : (0.55 + 0.45 * under) * (1 - lift * 0.25)) + ")";
+        lf.style.visibility = f >= 1 ? "hidden" : "";
+      });
+      var cur = Math.min(n - 1, Math.round(turns));
+      if (countEl) countEl.textContent = String(cur + 1).padStart(2, "0");
+      if (barEl) barEl.style.transform = "scaleX(" + state.p + ")";
+    }
+    var tw = gsap.to(state, { p: 1, ease: "none", onUpdate: render, scrollTrigger: { trigger: book, start: "top top", end: "bottom bottom", scrub: 0.5 } });
+    ST.refresh(); render();
+    // swipe: move one page (RTL: swipe right for next, LTR: swipe left)
+    var sx = 0, sy = 0;
+    function goPage(k) {
+      k = Math.max(0, Math.min(n - 1, k));
+      var top = book.getBoundingClientRect().top + window.scrollY;
+      var y = top + (book.offsetHeight - window.innerHeight) * (k / (n - 1));
+      if (window.__lenis) window.__lenis.scrollTo(y, { duration: 0.9 }); else window.scrollTo({ top: y, behavior: "smooth" });
+    }
+    function ts(e) { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }
+    function te(e) {
+      var dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy;
+      if (Math.abs(dx) < 45 || Math.abs(dx) < Math.abs(dy) * 1.2) return;
+      var cur = Math.round(state.p * (n - 1)), next = (root.dir === "rtl" ? dx > 0 : dx < 0);
+      goPage(cur + (next ? 1 : -1));
+    }
+    // a clearly horizontal drag inside the book belongs to the book, not to the browser's back/forward gesture
+    function tm(e) {
+      var dx = e.touches[0].clientX - sx, dy = e.touches[0].clientY - sy;
+      if (Math.abs(dx) > 12 && Math.abs(dx) > Math.abs(dy) && e.cancelable) e.preventDefault();
+    }
+    stage.addEventListener("touchstart", ts, { passive: true });
+    stage.addEventListener("touchmove", tm, { passive: false });
+    stage.addEventListener("touchend", te, { passive: true });
+    $(".nav__lang").addEventListener("click", render);
+    return function () {
+      tw.kill(); book.classList.remove("is-flip");
+      stage.removeEventListener("touchstart", ts); stage.removeEventListener("touchmove", tm); stage.removeEventListener("touchend", te);
+      leaves.forEach(function (lf) { lf.style.transform = ""; lf.style.filter = ""; lf.style.visibility = ""; lf.style.zIndex = ""; });
+    };
+  });
+
   // 3) timeline line fills as you read
   gsap.fromTo(".tl__fill", { height: 0 }, { height: "calc(100% - 16px)", ease: "none", scrollTrigger: { trigger: ".tl", start: "top 70%", end: "bottom 70%", scrub: true } });
 
