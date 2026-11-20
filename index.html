@@ -11,8 +11,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:wght@300;400;500&family=IBM+Plex+Sans+Arabic:wght@300;400;500&family=Josefin+Sans:wght@300;400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=4">
-  <link rel="stylesheet" href="chat.css?v=4">
+  <link rel="stylesheet" href="style.css?v=5">
+  <link rel="stylesheet" href="chat.css?v=5">
 </head>
 <body>
   <span hidden data-ar-title="أعمال العرب | مفتاح مساحتك" data-en-title="Aamal Al Arab | The key to your space"></span>
@@ -130,18 +130,60 @@
       </div>
     </section>
 
-    <!-- PROJECTS -->
-    <section class="page page--stone" id="projects" aria-labelledby="h-proj">
-      <div class="proj-head">
-        <div><h2 class="serif h2" id="h-proj" data-up><span data-l="ar">مشاريع مختارة</span><span data-l="en">Selected projects</span></h2><span class="caps" data-up><span data-l="ar">الرياض · الدرعية</span><span data-l="en">Riyadh · Diriyah</span></span></div>
-      </div>
-      <div class="projs">
-        <article class="proj" data-up><div class="proj__img"><img src="assets/img/work-1.jpg" alt="" loading="lazy"></div><div class="proj__meta"><h3><span data-l="ar">فيلا الملقا</span><span data-l="en">Al Malqa Villa</span></h3><span class="caps"><span data-l="ar">تصميم + تفصيل</span><span data-l="en">Design + make</span></span></div></article>
-        <article class="proj" data-up><div class="proj__img"><img src="assets/img/work-2.jpg" alt="" loading="lazy"></div><div class="proj__meta"><h3><span data-l="ar">مجلس حطين</span><span data-l="en">Hittin Majlis</span></h3><span class="caps"><span data-l="ar">تفصيل</span><span data-l="en">Bespoke</span></span></div></article>
-        <article class="proj" data-up><div class="proj__img"><img src="assets/img/work-5.jpg" alt="" loading="lazy"></div><div class="proj__meta"><h3><span data-l="ar">جناح النخيل</span><span data-l="en">Al Nakheel Suite</span></h3><span class="caps"><span data-l="ar">ستائر + تنجيد</span><span data-l="en">Curtains + upholstery</span></span></div></article>
-        <article class="proj" data-up><div class="proj__img"><img src="assets/img/work-4.jpg" alt="" loading="lazy"></div><div class="proj__meta"><h3><span data-l="ar">بهو فندق الدرعية</span><span data-l="en">Diriyah Hotel Lobby</span></h3><span class="caps"><span data-l="ar">ضيافة</span><span data-l="en">Hospitality</span></span></div></article>
+    <!-- PROJECTS: featured -->
+    <section class="feat" id="projects" aria-labelledby="h-feat">
+      <div class="feat__stick">
+        <div class="feat__text">
+          <span class="caps feat__kicker"><span data-l="ar">مشروع مميز</span><span data-l="en">Featured project</span></span>
+          <h2 class="serif h2" id="h-feat"><span data-l="ar">استراحة خاصة<br>في الرياض</span><span data-l="en">A private retreat<br>in Riyadh</span></h2>
+          <p class="muted"><span data-l="ar">صالات وجلسات مطلّة على الحديقة: أثاث خشب داكن صُنع على المقاس، مساند كتان، وجدران خشبية بإضاءة مخفية.</span><span data-l="en">Lounges and seating facing the garden: dark-wood furniture made to measure, linen cushions, and timber screens with hidden lighting.</span></p>
+          <ul class="feat__tags caps"><li><span data-l="ar">أثاث مفصّل</span><span data-l="en">Bespoke furniture</span></li><li><span data-l="ar">تنجيد</span><span data-l="en">Upholstery</span></li><li><span data-l="ar">تنسيق</span><span data-l="en">Styling</span></li></ul>
+          <div class="feat__meta"><span class="feat__count serif"><b>01</b><small>/ 07</small></span><span class="feat__cap caps"></span></div>
+          <button class="btn feat__open" type="button"><span data-l="ar">شاهد كل الصور</span><span data-l="en">View all photos</span><svg aria-hidden="true"><use href="#arw"/></svg></button>
+        </div>
+        <div class="feat__frames">
+            <figure class="feat__frame" data-i="0"><img src="assets/proj/p16.jpg" alt="" data-ar-alt="جلسة على الحديقة" data-en-alt="Garden-view lounge"><figcaption class="caps"><span data-l="ar">جلسة على الحديقة</span><span data-l="en">Garden-view lounge</span></figcaption></figure>
+            <figure class="feat__frame" data-i="1"><img src="assets/proj/p15.jpg" alt="" loading="lazy" data-ar-alt="خشب داكن ومساند كتان" data-en-alt="Dark wood and linen"><figcaption class="caps"><span data-l="ar">خشب داكن ومساند كتان</span><span data-l="en">Dark wood and linen</span></figcaption></figure>
+            <figure class="feat__frame" data-i="2"><img src="assets/proj/p14.jpg" alt="" loading="lazy" data-ar-alt="الصالة الرئيسية" data-en-alt="The main lounge"><figcaption class="caps"><span data-l="ar">الصالة الرئيسية</span><span data-l="en">The main lounge</span></figcaption></figure>
+            <figure class="feat__frame" data-i="3"><img src="assets/proj/p20.jpg" alt="" loading="lazy" data-ar-alt="الصالة كاملة" data-en-alt="The full lounge"><figcaption class="caps"><span data-l="ar">الصالة كاملة</span><span data-l="en">The full lounge</span></figcaption></figure>
+            <figure class="feat__frame" data-i="4"><img src="assets/proj/p17.jpg" alt="" loading="lazy" data-ar-alt="زاوية الاسترخاء" data-en-alt="The relaxation corner"><figcaption class="caps"><span data-l="ar">زاوية الاسترخاء</span><span data-l="en">The relaxation corner</span></figcaption></figure>
+            <figure class="feat__frame" data-i="5"><img src="assets/proj/p19.jpg" alt="" loading="lazy" data-ar-alt="طاولة الطعام" data-en-alt="The dining table"><figcaption class="caps"><span data-l="ar">طاولة الطعام</span><span data-l="en">The dining table</span></figcaption></figure>
+            <figure class="feat__frame" data-i="6"><img src="assets/proj/p18.jpg" alt="" loading="lazy" data-ar-alt="بوفيه بنقشة متعرجة" data-en-alt="Herringbone sideboard"><figcaption class="caps"><span data-l="ar">بوفيه بنقشة متعرجة</span><span data-l="en">Herringbone sideboard</span></figcaption></figure>
+          <div class="feat__dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
       </div>
     </section>
+
+    <!-- PROJECTS: gallery -->
+    <section class="page page--stone gal" aria-labelledby="h-gal">
+      <div class="gal__head">
+        <div><h2 class="serif h2" id="h-gal" data-up><span data-l="ar">مساحات صمّمناها</span><span data-l="en">Spaces we designed</span></h2><span class="caps" data-up><span data-l="ar">اضغط على أي صورة لعرضها</span><span data-l="en">Tap any photo to view it</span></span></div>
+        <div class="gal__filters" role="group" data-ar-aria="تصفية المشاريع" data-en-aria="Filter projects" data-up>
+          <button type="button" class="is-on" data-f="all" aria-pressed="true"><span data-l="ar">الكل</span><span data-l="en">All</span></button>
+          <button type="button" data-f="majlis" aria-pressed="false"><span data-l="ar">مجالس</span><span data-l="en">Majlis</span></button>
+          <button type="button" data-f="living" aria-pressed="false"><span data-l="ar">صالات</span><span data-l="en">Living rooms</span></button>
+          <button type="button" data-f="bed" aria-pressed="false"><span data-l="ar">غرف نوم</span><span data-l="en">Bedrooms</span></button>
+        </div>
+      </div>
+      <div class="gal__grid">
+          <button class="gitem gitem--wide" type="button" data-cat="majlis" data-full="assets/proj/p7.jpg" data-cap-ar="مجلس بزخارف جبسية" data-cap-en="Majlis with plaster ornament"><img src="assets/proj/p7-s.jpg" alt="" loading="lazy" data-ar-alt="مجلس بزخارف جبسية" data-en-alt="Majlis with plaster ornament"><span class="gitem__cap"><b><span data-l="ar">مجلس بزخارف جبسية</span><span data-l="en">Majlis with plaster ornament</span></b><i aria-hidden="true">＋</i></span></button>
+          <button class="gitem gitem--n" type="button" data-cat="living" data-full="assets/proj/p10.jpg" data-cap-ar="صالة بستائر مخمل خضراء" data-cap-en="Living room, green velvet drapes"><img src="assets/proj/p10-s.jpg" alt="" loading="lazy" data-ar-alt="صالة بستائر مخمل خضراء" data-en-alt="Living room, green velvet drapes"><span class="gitem__cap"><b><span data-l="ar">صالة بستائر مخمل خضراء</span><span data-l="en">Living room, green velvet drapes</span></b><i aria-hidden="true">＋</i></span></button>
+          <button class="gitem gitem--tall" type="button" data-cat="bed" data-full="assets/proj/p9.jpg" data-cap-ar="غرفة نوم بظهر منجّد" data-cap-en="Bedroom with upholstered headboard"><img src="assets/proj/p9-s.jpg" alt="" loading="lazy" data-ar-alt="غرفة نوم بظهر منجّد" data-en-alt="Bedroom with upholstered headboard"><span class="gitem__cap"><b><span data-l="ar">غرفة نوم بظهر منجّد</span><span data-l="en">Bedroom with upholstered headboard</span></b><i aria-hidden="true">＋</i></span></button>
+          <button class="gitem gitem--n" type="button" data-cat="living" data-full="assets/proj/p12.jpg" data-cap-ar="مجلس بدرجات المريمية" data-cap-en="Sage-toned majlis"><img src="assets/proj/p12-s.jpg" alt="" loading="lazy" data-ar-alt="مجلس بدرجات المريمية" data-en-alt="Sage-toned majlis"><span class="gitem__cap"><b><span data-l="ar">مجلس بدرجات المريمية</span><span data-l="en">Sage-toned majlis</span></b><i aria-hidden="true">＋</i></span></button>
+          <button class="gitem gitem--n" type="button" data-cat="majlis" data-full="assets/proj/p8.jpg" data-cap-ar="مجلس نصف دائري" data-cap-en="Curved majlis"><img src="assets/proj/p8-s.jpg" alt="" loading="lazy" data-ar-alt="مجلس نصف دائري" data-en-alt="Curved majlis"><span class="gitem__cap"><b><span data-l="ar">مجلس نصف دائري</span><span data-l="en">Curved majlis</span></b><i aria-hidden="true">＋</i></span></button>
+          <button class="gitem gitem--wide" type="button" data-cat="living" data-full="assets/proj/p11.jpg" data-cap-ar="صالة بلوحة مضيئة" data-cap-en="Living room with a lit mural"><img src="assets/proj/p11-s.jpg" alt="" loading="lazy" data-ar-alt="صالة بلوحة مضيئة" data-en-alt="Living room with a lit mural"><span class="gitem__cap"><b><span data-l="ar">صالة بلوحة مضيئة</span><span data-l="en">Living room with a lit mural</span></b><i aria-hidden="true">＋</i></span></button>
+          <button class="gitem gitem--n" type="button" data-cat="living" data-full="assets/proj/p13.jpg" data-cap-ar="صالة كلاسيكية بسجاد يدوي" data-cap-en="Classic room with hand-knotted rugs"><img src="assets/proj/p13-s.jpg" alt="" loading="lazy" data-ar-alt="صالة كلاسيكية بسجاد يدوي" data-en-alt="Classic room with hand-knotted rugs"><span class="gitem__cap"><b><span data-l="ar">صالة كلاسيكية بسجاد يدوي</span><span data-l="en">Classic room with hand-knotted rugs</span></b><i aria-hidden="true">＋</i></span></button>
+          <button class="gitem gitem--n" type="button" data-cat="living" data-full="assets/proj/p6.jpg" data-cap-ar="صالة بسقف خشبي" data-cap-en="Living room with timber beams"><img src="assets/proj/p6-s.jpg" alt="" loading="lazy" data-ar-alt="صالة بسقف خشبي" data-en-alt="Living room with timber beams"><span class="gitem__cap"><b><span data-l="ar">صالة بسقف خشبي</span><span data-l="en">Living room with timber beams</span></b><i aria-hidden="true">＋</i></span></button>
+      </div>
+    </section>
+
+    <!-- LIGHTBOX -->
+    <div class="lb" role="dialog" aria-modal="true" aria-label="Gallery" hidden>
+      <button class="lb__close" type="button" data-ar-aria="إغلاق" data-en-aria="Close">×</button>
+      <button class="lb__nav lb__prev" type="button" data-ar-aria="السابقة" data-en-aria="Previous"><svg aria-hidden="true"><use href="#arw"/></svg></button>
+      <figure class="lb__fig"><img alt=""><figcaption><span class="lb__cap"></span><span class="lb__n caps"></span></figcaption></figure>
+      <button class="lb__nav lb__next" type="button" data-ar-aria="التالية" data-en-aria="Next"><svg aria-hidden="true"><use href="#arw"/></svg></button>
+    </div>
 
     <!-- CONTACT -->
     <section class="page" id="contact" aria-labelledby="h-contact">
@@ -180,7 +222,8 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
-  <script src="app.js?v=4" defer></script>
-  <script src="chat.js?v=4" defer></script>
+  <script src="app.js?v=5" defer></script>
+  <script src="projects.js?v=5" defer></script>
+  <script src="chat.js?v=5" defer></script>
 </body>
 </html>
