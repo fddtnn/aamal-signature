@@ -101,7 +101,7 @@
   /* ---------- mobile swipe strip: keep the counter in sync ---------- */
   var strip = $(".feat__frames");
   strip.addEventListener("scroll", function () {
-    if (window.innerWidth > 960) return;
+    if (!reduce && window.gsap) return;
     var mid = strip.getBoundingClientRect().left + strip.clientWidth / 2, best = 0, bd = 1e9;
     frames.forEach(function (f, i) { var r = f.getBoundingClientRect(), d = Math.abs(r.left + r.width / 2 - mid); if (d < bd) { bd = d; best = i; } });
     setFrame(best);
@@ -111,7 +111,7 @@
 
   /* ---------- desktop: pinned stage, each photo wipes in over the last ---------- */
   var gsap = window.gsap, ST = window.ScrollTrigger;
-  gsap.matchMedia().add("(min-width: 961px)", function () {
+  gsap.matchMedia().add("all", function () {
     var rtl = root.dir === "rtl";
     var hidden = rtl ? "inset(0% 100% 0% 0%)" : "inset(0% 0% 0% 100%)";
     frames.forEach(function (f, i) { if (i) gsap.set(f, { clipPath: hidden }); });
