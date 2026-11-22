@@ -3,17 +3,20 @@
    Keyhole + reeded glass, folded-book pages, editorial serif
    ========================================================== */
 :root {
-  --green: #13261d;
-  --green-2: #1b3327;
-  --green-3: #24402f;
+  --green: #12302a;
+  --green-2: #173c35;
+  --green-3: #1f4a41;
   --logo: #126434;
-  --stone: #e8e1d5;
-  --stone-2: #ddd4c6;
+  --stone: #efe9dc;
+  --stone-2: #e3dbca;
+  --persimmon: #de6941;
+  --persimmon-d: #c4552f;
+  --persimmon-ink: #a8461f;
   --taupe: #6d635a;
   --bronze: #845a34;
   --black: #070807;
   --ink: #1b1a17;
-  --cream-t: rgba(232, 225, 213, 0.72);
+  --cream-t: rgba(239, 233, 220, 0.74);
   --serif: "Cormorant Garamond", "Times New Roman", serif;
   --caps: "Josefin Sans", system-ui, sans-serif;
   --body: "Josefin Sans", system-ui, sans-serif;
@@ -56,7 +59,7 @@ html[dir="rtl"] .btn svg { transform: scaleX(-1); }
 
 /* ---------- nav ---------- */
 .nav { position: fixed; top: 0; inset-inline: 0; z-index: 50; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 20px; padding: 22px var(--pad); color: var(--stone); transition: background 0.4s, padding 0.4s; }
-.nav.is-solid { background: rgba(19, 38, 29, 0.86); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); padding-block: 14px; }
+.nav.is-solid { background: rgba(18, 48, 42, 0.86); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); padding-block: 14px; }
 .nav__links { display: flex; gap: 28px; }
 .nav__links a { opacity: 0.86; transition: opacity 0.2s; }
 .nav__links a:hover { opacity: 1; }
@@ -355,3 +358,35 @@ html[dir="rtl"] .lb__next svg { transform: scaleX(-1); }
   .feat__frame, html[dir="rtl"] .feat__frame { position: relative; flex: none; width: 80%; aspect-ratio: 4 / 3; clip-path: none; scroll-snap-align: center; }
   .feat__frame img { transform: none; }
 }
+
+/* ==========================================================
+   Persimmon accent (Oat / Pine / Persimmon palette)
+   ========================================================== */
+::selection { background: var(--persimmon); color: #fff; }
+:focus-visible { outline-color: var(--persimmon); }
+.btn--fill { background: var(--persimmon); color: #fff; border-color: var(--persimmon); }
+.btn--fill:hover { background: var(--persimmon-d); border-color: var(--persimmon-d); color: #fff; }
+.btn:not(.btn--fill):hover { background: var(--persimmon); border-color: var(--persimmon); color: #fff; }
+.nav .btn { border-color: var(--persimmon); }
+/* eyebrows */
+.feat__kicker, .proj-head .caps, .gal__head .caps, .about .caps { color: var(--persimmon); }
+.page--stone .feat__kicker, .page--stone .proj-head .caps, .page--stone .gal__head .caps, .about .caps { color: var(--persimmon-ink); }
+.feat__kicker::before { content: ""; display: inline-block; width: 26px; height: 1px; background: currentColor; vertical-align: middle; margin-inline-end: 12px; }
+/* featured project */
+.feat__count b { color: var(--persimmon); }
+.feat__dots i.is-on { background: var(--persimmon); }
+/* timeline */
+.tl__fill { background: var(--persimmon); width: 2px; }
+.tl__num { color: var(--persimmon); }
+/* gallery filters */
+.gal__filters button.is-on { background: var(--persimmon); border-color: var(--persimmon); color: #fff; }
+.gal__filters button:hover { border-color: var(--persimmon); }
+/* book: the closing "book a visit" leaf in persimmon */
+.leaf--persimmon { background: var(--persimmon); color: #fff; }
+.leaf--persimmon p { color: rgba(255, 255, 255, 0.86); }
+.leaf--persimmon .btn { border-color: #fff; }
+.leaf--persimmon .btn:hover { background: var(--green-2); border-color: var(--green-2); color: var(--stone); }
+/* book progress */
+.book__count b { color: var(--persimmon); }
+.book__bar i { background: var(--persimmon); height: 2px; }
+.book__bar { overflow: visible; }

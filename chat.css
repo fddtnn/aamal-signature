@@ -1,5 +1,5 @@
 /* chat colours mapped to this site */
-.chat, .chat-launch { --green:#13261d;--green-deep:#845a34;--sage-deep:#845a34;--ink:#1b1a17;--muted:#6d635a;--ease:cubic-bezier(0.22,1,0.36,1); }
+.chat, .chat-launch { --green:#173c35;--green-deep:#c4552f;--sage-deep:#c4552f;--ink:#1b1a17;--muted:#6d635a;--ease:cubic-bezier(0.22,1,0.36,1); }
 /* Aamal Al Arab — chat assistant (liquid glass) */
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
